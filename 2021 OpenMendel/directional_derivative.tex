@@ -1,0 +1,479 @@
+\documentclass[10pt]{beamer} %slightly bigger font
+\usetheme{default} 
+\setbeamertemplate{navigation symbols}{} %gets rid of navigation symbols
+%\setbeamertemplate{footline}{} %gets rid of bottom navigation bars
+%\setbeamertemplate{footline}[page number]{} %use this, if you want page numbers
+%
+\setbeamertemplate{itemize items}[circle] %I like round bullet points
+%
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{title}%
+    \hspace{5em}%
+    \normalsize\insertframenumber/\inserttotalframenumber
+}
+
+\setlength\parskip{10pt} % I like white space between paragraphs
+
+\setbeamertemplate{frametitle continuation}[from second][ ]
+
+% Here is a `helper' functions to save typing, later
+\newcommand{\mystart}[1]{ \section{#1}\begin{frame}[allowframebreaks, fragile] \frametitle{#1} } 
+
+%\usepackage{float}
+%\usepackage{bbm}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{ulem}
+%\usepackage{subfig}
+%\usepackage{sidecap}
+%\usepackage{wrapfig}
+%\usepackage{url}
+%
+
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{sidecap}
+\usepackage{fancyvrb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\Ell}{\mathcal{L}}
+\newcommand{\mb}{\mathbf}
+\newcommand{\indfun}[1]{\ensuremath{\mb{1}_{\{#1\}}}}
+\newcommand{\E}{\mathbbm{E}}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\fvset{frame=none,framesep=0mm,fontsize=\tiny,numbers=none,framerule=0mm,numbersep=1mm,commandchars=\\\{\}}
+
+%\mode<presentation>
+%{
+%  \usetheme{Boadilla}      % or try Darmstadt, Madrid, Warsaw, ...
+%  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
+%  \usefonttheme{default}  % or try serif, structurebold, ...
+%  \setbeamertemplate{navigation symbols}{}
+%  \setbeamertemplate{caption}[numbered]
+%
+%
+%}
+
+
+%\usepackage{media9}
+\usepackage{animate}
+
+%% For \subfloat command
+\usepackage{subfig}
+
+\usepackage{color}
+\newcommand{\blue}[1]{{\color{blue} #1} }
+\newcommand{\red}[1]{{\color{red} #1} }
+\definecolor{mygray}{rgb}{0.95,0.95,0.95}
+\newcommand{\myGray}[1]{{\color{mygray} #1} }
+\usepackage{tikz,pgfpages}
+\usepackage{amsmath,amssymb}
+\usetikzlibrary{shapes,arrows,trees,mindmap,decorations.pathreplacing}
+
+\usepackage{algorithm,algorithmic}
+
+\usepackage{cancel}
+
+%\newcommand{\amp}{\mathop{\:\:\,}\nolimits}
+%
+%\newcommand{\prox}{\mathop{\rm prox}\nolimits}
+
+\newtheorem{proposition}{Proposition}
+%\newtheorem{example}{Example}
+%\newtheorem{definition}{Definition}
+\newcommand{\svskip}{\vspace{1.75mm}}
+\def\E{\mathop{\rm E\,\!}\nolimits}
+\def\Var{\mathop{\rm Var}\nolimits}
+\def\Cov{\mathop{\rm Cov}\nolimits}
+\def\trace{\mathop{\rm trace}\nolimits}
+\def\logdet{\mathop{\rm \logdet}\nolimits}
+\def\vec{\mathop{\rm vec}\nolimits}
+\def\den{\mathop{\rm den}\nolimits}
+\def\midd{\mathop{\,|\,}\nolimits}
+\def\sgn{\mathop{\rm sgn}\nolimits}
+\def\sinc{\mathop{\rm sinc}\nolimits}
+\def\curl{\mathop{\rm curl}\nolimits}
+\def\div{\mathop{\rm div}\nolimits}
+\def\tr{\mathop{\rm tr}\nolimits}
+\def\len{\mathop{\rm len}\nolimits}
+\def\cond{\mathop{\rm cond}\nolimits}
+\def\conv{\mathop{\rm conv}\nolimits}
+\def\dom{\mathop{\rm dom}\nolimits}
+\def\epi{\mathop{\rm epi}\nolimits}
+\def\graph{\mathop{\rm graph}\nolimits}
+\def\cl{\mathop{\rm cl}\nolimits}
+\def\diag{\mathop{\rm diag}\nolimits}
+\def\dist{\mathop{\rm dist}\nolimits}
+\def\prox{\mathop{\rm prox}\nolimits}
+\def\argmin{\mathop{\rm argmin}\nolimits}
+\def\gph{\mathop{\rm gph}\nolimits}
+\def\amp{\mathop{\;\:}\nolimits}
+\newcommand{\ba}{\boldsymbol{a}}
+\newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bc}{\boldsymbol{c}}
+\newcommand{\bd}{\boldsymbol{d}}
+\newcommand{\be}{\boldsymbol{e}}
+\newcommand{\bff}{\boldsymbol{f}}
+\newcommand{\bg}{\boldsymbol{g}}
+\newcommand{\bh}{\boldsymbol{h}}
+\newcommand{\bi}{\boldsymbol{i}}
+\newcommand{\bj}{\boldsymbol{j}}
+\newcommand{\bk}{\boldsymbol{k}}
+\newcommand{\bl}{\boldsymbol{l}}
+\newcommand{\bm}{\boldsymbol{m}}
+\newcommand{\bn}{\boldsymbol{n}}
+\newcommand{\bo}{\boldsymbol{o}}
+\newcommand{\bp}{\boldsymbol{p}}
+\newcommand{\bq}{\boldsymbol{q}}
+\newcommand{\br}{\boldsymbol{r}}
+\newcommand{\bs}{\boldsymbol{s}}
+\newcommand{\bt}{\boldsymbol{t}}
+\newcommand{\bu}{\boldsymbol{u}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bw}{\boldsymbol{w}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\bz}{\boldsymbol{z}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bD}{\boldsymbol{D}}
+\newcommand{\bE}{\boldsymbol{E}}
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\bG}{\boldsymbol{G}}
+\newcommand{\bH}{\boldsymbol{H}}
+\newcommand{\bI}{\boldsymbol{I}}
+\newcommand{\bJ}{\boldsymbol{J}}
+\newcommand{\bK}{\boldsymbol{K}}
+\newcommand{\bL}{\boldsymbol{L}}
+\newcommand{\bM}{\boldsymbol{M}}
+\newcommand{\bN}{\boldsymbol{N}}
+\newcommand{\bO}{\boldsymbol{O}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bQ}{\boldsymbol{Q}}
+\newcommand{\bR}{\boldsymbol{R}}
+\newcommand{\bS}{\boldsymbol{S}}
+\newcommand{\bT}{\boldsymbol{T}}
+\newcommand{\bU}{\boldsymbol{U}}
+\newcommand{\bV}{\boldsymbol{V}}
+\newcommand{\bW}{\boldsymbol{W}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bY}{\boldsymbol{Y}}
+\newcommand{\bZ}{\boldsymbol{Z}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bepsilon}{\boldsymbol{\epsilon}}
+\newcommand{\blambda}{\boldsymbol{\lambda}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bnu}{\boldsymbol{\nu}}
+\newcommand{\bphi}{\boldsymbol{\phi}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\bsigma}{\boldsymbol{\sigma}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bzeta}{\boldsymbol{\zeta}}
+\newcommand{\bomega}{\boldsymbol{\omega}}
+\newcommand{\bGamma}{\boldsymbol{\Gamma}}
+\newcommand{\bDelta}{\boldsymbol{\Delta}}
+\newcommand{\bTheta}{\boldsymbol{\Theta}}
+\newcommand{\bLambda}{\boldsymbol{\Lambda}}
+\newcommand{\bXi}{\boldsymbol{\Xi}}
+\newcommand{\bPi}{\boldsymbol{\Pi}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\bUpsilon}{\boldsymbol{\Upsilon}}
+\newcommand{\bPhi}{\boldsymbol{\Phi}}
+\newcommand{\bPsi}{\boldsymbol{\Psi}}
+\newcommand{\bOmega}{\mathbf{\Omega}}
+
+\newcommand{\source}[1]{\caption*{Source: {#1}} }
+
+
+
+\title[]{Directional derivatives for matrix calculus}
+\author[Benjamin Chu]{Benjamin Chu}
+\institute[UCLA]{Graduate program in Biomathematics\\
+Department of Computational Medicine\\
+University of California, Los Angeles}
+
+\date{January 28, 2021}
+
+%\epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
+%\AppendGraphicsExtensions{.gif}
+
+\AtBeginSection[]
+{
+ \begin{frame}<beamer>
+ \frametitle{Outline}
+ \tableofcontents[currentsection]
+ \end{frame}
+}
+\includeonly{struct}
+
+\setbeamercovered{transparent}
+\begin{document}
+\frame{\titlepage}
+
+\frame{
+\frametitle{Introduction}
+\begin{itemize}
+    \item In statistics, we often want to maximize things, requiring gradients and Hessians
+    \item One way to obtain gradients and Hessians is through directional derivatives
+    \item Compared to traditional matrix calculus, its primary advantages are:
+    \begin{enumerate}
+        \item Gradient and Hessian are implicit in the 1st and 2nd directional derivatives
+        \item Variables remain intact until gradients/Hessians are explicitly needed (e.g. $\bX, \bY$ stay as $\bX, \bY$ instead of $\vec(\bX)$...etc) 
+        \item Scalar/vector/matrix valued functions have scalar/vector/matrix valued directional derivatives
+    \end{enumerate}
+\end{itemize}
+}
+
+\frame{
+\frametitle{Definition}
+The (Hadamard semi-) directional derivative of $f(\bx)$ in the direction $\bv$ is the limit
+\begin{eqnarray*}
+    d_{\bv} f(\bx) = \lim_{\substack{h\rightarrow 0\\\bw\rightarrow\bv}}\frac{f(\bx + h\bw) - f(\bx)}{h}.
+\end{eqnarray*}
+Directional derivatives enjoys the chain, sum, and product rules (Proposition 3.2.4 of MM optimization)
+\begin{align*}
+    d_{\bv} [f \circ g(\bx)] &= d_{d_{\bv} g(\bx)} f[g(\bx)]\\
+    d_{\bv}[f(\bx) + g(\bx)] &= d_{\bv}f(\bx) + d_{\bv}g(\bx) \\
+    d_{\bv}[f(\bx)g(\bx)] &= d_{\bv}f(\bx)g(\bx) + f(\bx)d_{\bv}g(\bx)
+\end{align*}
+Furthermore, for a differentiable function $f(\bx)$, we have $d_{\bv} f(\bx) = df(\bx)\bv$, where $df(\bx)=\nabla f(\bx)^t$ is the first differential of $f(\bx)$. For a differentiable function $f(\bx,\by)$ of two variables, we also have $d_{(\bu,\bv)}f(\bx,\by)= d_{(\bu,{\bf 0})}f(\bx,\by)+ d_{({\bf 0},\bv)}f(\bx,\by)$. }
+
+\frame{
+\frametitle{Second Differentials}
+The second directional derivative is similarly defined
+\begin{eqnarray*}
+    d_{\bu}[d_{\bv} f(\bx)] = \lim_{\substack{h\rightarrow 0\\\Tilde{\bw}\rightarrow\bu}}\frac{d_{\bv}f(\bx + h\Tilde{\bw}) - d_{\bv}f(\bx)}{h}.
+\end{eqnarray*}
+For $f(\bx)$ twice differentiable, the second differential $d_{\bu}[d_{\bv} f(\bx)]$ is linear in $\bu$ for $\bv$ fixed and linear in $\bv$ for $\bu$ fixed. It is accordingly a bilinear form.  When we set $\bu=\bv$, we get a quadratic form $d^2_{\bv}f(\bx)$. At this juncture we have not yet associated a matrix to the quadratic form.
+In fact, if $\bx$ is a matrix, then the matrix
+is replaced by a tensor. We can identify a matrix if we vectorize $\bx$ by stacking its columns into a matrix.
+}
+
+\frame{
+\frametitle{Extracting gradients from directional derivatives}
+For vector $\bx$, we can extract gradients and Hessians for twice differentiable functions as
+\begin{align*}
+    d_{\bv} f(\bx)
+    &= \nabla f(\bx) \cdot \bv = (\nabla f(\bx))^t \bv\\
+    d_{\bv}^2 f(\bx)
+    &= \bv^t \bH \bv
+\end{align*}
+For matrix $\bX$, we extract these as
+\begin{align*}
+    d_{\bV} f(\bX)
+    &= \vec(\nabla f(\bX))^t\vec(\bV) = \tr((\nabla f(\bX))^t\bV)\\
+    d_{\bV}^2 f(\bX)
+    &= \vec(\bV)^t \bH \vec(\bV)
+\end{align*}
+\begin{proof}
+The gradients are covered in Prop 3.2.1 of MM Optimization. For matrix gradients, the trace function induces an inner product on matrices
+by analogy with the ordinary inner product for
+vectors. The formula $\tr(\bA^t\bB) = \vec(\bA)^t\vec(\bB)$ converts the trace inner product to the vector inner product. 
+\end{proof}
+}
+
+\frame{
+\frametitle{Warm up 1: find $d_{\bV}[f(\bX)^{-1}]$ for $\bX$ and $f(\bX)$
+matrices.}
+\begin{align*}
+    d_{\bV}f(\bX)^{-1}
+    &= \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}} \frac{f(\bX + t\bW)^{-1} - f(\bX)^{-1}}{t}\\
+    &= \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}} f(\bX + t\bW)^{-1} \frac{1 - f(\bX + t\bW)f(\bX)^{-1}}{t}\\
+    &= \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}}f(\bX + t\bW)^{-1}\frac{f(\bX) - f(\bX+t\bW)}{t}f(\bX)^{-1}\\
+    &= -f(\bX)^{-1}d_{\bV}f(\bX)f(\bX)^{-1}.
+\end{align*}
+}
+
+\frame{
+\frametitle{Warm up 2: directional derivative of log determinants} For a symmetric positive definite $\bX$ and a symmetric direction $\bV$,
+\begin{align*}
+d_{\bV} \ln\det(\bX)
+=& \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}}\frac{\ln\det(\bX + t\bW)-\ln\det(\bX)}{t}\\
+=& \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}} \frac{\ln\left[\det(\bX^{1/2})\det(\bI+t\bX^{-1/2}\bW \bX^{-1/2})\bX^{1/2}\right]-\ln\det(\bX)}{t}\\
+=& \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}}\frac{\ln\det(\bI + t\bX^{-1/2}\bW\bX^{-1/2})}{t}\\
+=& \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}} \frac{\sum\ln(1 + t\lambda_i)}{t} \quad \left(\lambda = \text{eigenvalues of } \bX^{-1/2}\bW\bX^{-1/2}\right)\\
+\approx& \lim_{\substack{h\rightarrow 0\\\bW\rightarrow\bV}}\frac{\sum t\lambda_i}{t} \quad \left(\ln(1+x) \approx x \text{, for small }x\right)\\
+=& \sum\lambda_i = \tr\left(\bX^{-1/2}\bV\bX^{-1/2}\right)= \tr(\bX^{-1}\bV).
+\end{align*}
+}
+
+\frame{
+\frametitle{Detailed example: evaluate gradient of LMM}
+The loglikelihood for the $i$th sample in a linear mixed model is
+\begin{align*}
+    \ell_i(\bbeta, \bL, \sigma^2) = -\frac{1}{2} \log \det \bOmega_i - \frac{1}{2} (\by - \bX_i \bbeta)^T \bOmega_i^{-1} (\by - \bX_i \bbeta).
+\end{align*}
+Prove that the gradient is
+\begin{eqnarray*}
+    \nabla_{\bbeta} \ell_i(\bbeta, \bL, \sigma^2) &=& \bX_i^T \bOmega_i^{-1} \br_i, \\
+    \nabla_{\sigma^2} \ell_i(\bbeta, \bL, \sigma^2) &=& - \frac{1}{2} \operatorname{tr} (\bOmega_i^{-1}) + \frac{1}{2} \br_i^T \bOmega_i^{-2} \br_i, \\
+    \nabla_{\bL} \ell_i(\bbeta, \bL, \sigma^2) &=& - \bZ_i^T \bOmega_i^{-1} \bZ_i \bL + \bZ_i^T \bOmega_i^{-1} \br_i \br_i^T \bOmega_i^{-1} \bZ_i \bL,
+\end{eqnarray*}
+where $\bOmega_i = \sigma^2\bI + \bZ_i\bSigma\bZ_i^t= \sigma^2\bI + \bZ_i\bL\bL^t\bZ_i^t$ and $\br = \by_i - \bX_i\bbeta$. We optimize over the Cholesky factor $\bL$ instead of $\bSigma$ directly because the later needs to be positive semidefinite. The diagonal entries of $\bL$ must be positive, simpler constraint.
+}
+
+\frame{
+\frametitle{1st term: $d_{\bv} (\by - \bX_i \bbeta)^T \bOmega_i^{-1} (\by - \bX_i \bbeta)$ wrt to $\bbeta$}
+Using symmetry of $\bOmega_i$,
+\begin{align*}
+    &-\frac{1}{2} d_{\bv} (\by - \bX_i \bbeta)^T \bOmega_i^{-1} (\by - \bX_i \bbeta)\\
+    =& -\frac{1}{2}\lim_{\substack{t\rightarrow 0\\\bw\rightarrow\bv}}\frac{(\by - \bX_i(\bbeta+t\bw))^t\bOmega_i^{-1}(\by - \bX_i(\bbeta+t\bw)) - (\by - \bX_i \bbeta)^T \bOmega_i^{-1} (\by - \bX_i \bbeta)}{t}\\
+    =& -\frac{1}{2}\lim_{\substack{t\rightarrow 0\\\bw\rightarrow\bv}}\frac{-t(\by - \bX_i\bbeta)^t\bOmega_i^{-1}\bX_i\bw - t(\bX_i\bw)^t\bOmega_i^{-1}(\by - \bX_i\bbeta) + O(t^2)}{t}\\
+    =& (\by - \bX_i\bbeta)^t\bOmega_i^{-1}\bX_i\bv.
+\end{align*}
+To extract gradients, we set
+\begin{align*}
+    (\nabla_{\bbeta}\ell)^t\bv
+    &\equiv (\by - \bX_i\bbeta)^t\bOmega_i^{-1}\bX_i\bv
+\end{align*}
+So as desired,
+\begin{align*}
+    \nabla_{\bbeta}\ell = \bX_i^t\bOmega_i^{-1}(\by - \bX_i\bbeta).
+\end{align*}
+}
+
+\frame{
+\frametitle{2nd term part I: $d_v \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)$ wrt to $\sigma^2$}
+Chain rule says we must compute
+\begin{align*}
+    d_{d_{v} \sigma^2\bI} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ^t).
+\end{align*}
+First evaluate the direction
+\begin{align*}
+    d_v \sigma^2\bI = \lim_{\substack{t\rightarrow 0\\w\rightarrow v}}\frac{(\sigma^2 + tw)\bI - \sigma^2\bI}{t} = \lim_{\substack{t\rightarrow 0\\w\rightarrow v}}\frac{tw\bI}{t} = v\bI
+\end{align*}
+Thus
+\begin{align*}
+    & -\frac{1}{2} d_{d_{v} \sigma^2\bI} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)\\
+    =& -\frac{1}{2} d_{v\bI} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)\\
+    =& -\frac{1}{2}\tr\left((\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}v\bI \right) \quad (\text{warm up 2})
+\end{align*}
+}
+
+\frame{
+\frametitle{2nd term part II: $d_v \br^t(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\br$ wrt to $\sigma^2$}
+In our notation $\bOmega_i = \sigma^2\bI + \bZ\bL\bL^t\bZ^t$, so
+\begin{align*}
+    &d_v \left[ -\frac{1}{2}\br^t(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\br\right]\\
+    =& -\frac{1}{2}\br^t d_v\left[(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\right]\br\\
+    =& \frac{1}{2}\br^t\bOmega_i^{-1}d_v(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)\bOmega_i^{-1}\br \qquad \text{(warm up 1)}\\
+    =& \frac{1}{2}\br^t\bOmega_i^{-1} \lim_{\substack{t\rightarrow 0\\w\rightarrow v}}\frac{(\sigma^2 + tw)\bI + \bZ\bL\bL^t\bZ^t - (\sigma^2\bI + \bZ\bL\bL^t\bZ^t)}{t}\bOmega_i^{-1}\br\\
+    =& \frac{1}{2}\br\bOmega_i^{-1}\lim_{\substack{t\rightarrow 0\\w\rightarrow v}}\frac{tw\bI}{t}\bOmega_i^{-1}\br\\
+    =& \frac{1}{2}\br^t\bOmega_i^{-1} v\bI \bOmega_i^{-1}\br\\
+    =& \frac{1}{2}\br^t\bOmega_i^{-2}\br v \quad (v \text{ is constant})
+\end{align*}
+}
+
+\frame{
+\frametitle{2rd term: extracting gradients}
+In summary, the full 1st directional derivative wrt to $\sigma^2$ is
+\begin{align*}
+    d_v \ell = -\frac{1}{2}\tr\left((\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}v\bI \right) + \frac{1}{2}\br^t\bOmega_i^{-2}\br v
+\end{align*}
+To extract gradients, we set 
+\begin{eqnarray*}
+    v(\nabla_{\sigma^2}\ell) \equiv -\frac{1}{2}\tr\left((\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\right)v + \frac{1}{2} \br^t\bOmega_i^{-2}\br v
+\end{eqnarray*}
+So as desired,
+\begin{align*}
+    \nabla_{\sigma^2}\ell = -\frac{1}{2} \tr\left(\bOmega_i^{-1}\right) + \frac{1}{2} \br^t\bOmega_i^{-2}\br
+\end{align*}
+}
+
+\frame{
+\frametitle{3rd term part I: $d_{\bV} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)$ wrt to $\bL$}
+Chain rule says we must compute
+\begin{align*}
+    d_{d_{\bV} \bZ\bL\bL^t\bZ^t} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ^t).
+\end{align*}
+First evaluate the direction
+\begin{align*}
+    d_{\bV} \bZ\bL\bL^t\bZ^t
+    &= \lim_{\substack{t\rightarrow 0\\\bW\rightarrow\bV}} \frac{\bZ(\bL+t\bW)(\bL+t\bW)^t\bZ^t-\bZ\bL\bL^t\bZ^t}{t}\\
+    &= \lim_{\substack{t\rightarrow 0\\\bW\rightarrow\bV}} \frac{t\bZ\bL\bW^t\bZ^t + t\bZ\bW\bL^t\bZ^t + t^2\bZ\bW\bW^t\bZ^t}{t}\\
+    &= \bZ\bL\bV^t\bZ^t + \bZ\bV\bL^t\bZ^t = 2\bZ\bV\bL^t\bZ^t.
+\end{align*}
+Thus
+\begin{align*}
+    &d_{\bV} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ)&\\
+    =& d_{2\bZ\bV\bL^t\bZ^t} \ln\det(\sigma^2\bI + \bZ\bL\bL^t\bZ) & (\text{chain rule})\\
+    =& 2\tr\left((\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}(\bZ\bV\bL^t\bZ^t)\right) & (\text{warm up 2})\\
+    =& 2\tr\left([\bL^t\bZ^t(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\bZ]\bV\right) &
+\end{align*}
+}
+
+\frame{
+\frametitle{3rd term part II: $d_{\bV}\br^t(\sigma^2\bI + \bZ\bL\bL^t\bZ)^{-1}\br$ wrt $\bL$}
+In our notation $\bOmega = \sigma^2\bI + \bZ\bL\bL^t\bZ$, so
+\begin{align*}
+    &d_{\bV}\br^t(\sigma^2\bI + \bZ\bL\bL^t\bZ)^{-1}\br\\
+    =& \br^t d_{\bV}\left[(\sigma^2\bI + \bZ\bL\bL^t\bZ)^{-1}\right]\br \\
+    =& -\br^t\bOmega_i^{-1}d_{\bV}\left[(\sigma^2\bI + \bZ\bL\bL^t\bZ)\right]\bOmega_i^{-1}\br \qquad \text{(warm up 1)}\\
+    =& -\br^t\bOmega_i^{-1}\left[ \lim_{\substack{t\rightarrow 0\\\bW\rightarrow\bV}} \frac{\sigma^2\bI + \bZ(\bL+t\bW)(\bL+t\bW)^t\bZ^t - \sigma^2\bI-\bZ\bL\bL^t\bZ^t}{t}\right]\bOmega_i^{-1}\br\\
+    =& -\br^t\bOmega_i^{-1}\left[\bZ\bL\bV\bZ^t + \bZ\bV\bL^t\bZ^t\right]\bOmega_i^{-1}\br\\
+    =& -2 \tr\left(\br^t\bOmega_i^{-1}\bZ\bV\bL^t\bZ^t\bOmega_i^{-1}\br\right)\\
+    =& -2\tr\left(\bL^t\bZ^t\bOmega_i^{-1}\br\br^t\bOmega_i^{-1}\bZ\bV\right)
+\end{align*}
+}
+
+\frame{
+\frametitle{3rd term: extracting gradients}
+To extract gradients, we set 
+\begin{eqnarray*}
+    \tr\left((\nabla_{\bL }\ell)^t \bV\right)
+    &\equiv& 
+    -\tr\left([\bL^t\bZ^t(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\bZ]\bV\right)\\
+    &&+\tr\left([\bL^t\bZ^t\bOmega_i^{-1}\br\br^t\bOmega_i^{-1}\bZ]\bV\right)
+\end{eqnarray*}
+So as desired,
+\begin{align*}
+    \nabla_{\bL }\ell 
+    &= -\bZ^t(\sigma^2\bI + \bZ\bL\bL^t\bZ^t)^{-1}\bZ\bL + \bZ^t\bOmega_i^{-1}\br\br^t\bOmega_i^{-1}\bZ\bL.
+\end{align*}
+}
+
+% \frame{
+% \frametitle{Lemma: Commutative with linear operators}
+% For any linear operator $\rm L$,
+% \begin{align*}
+%     d_{\bv}{\rm L}[f(\bx)] = {\rm L}[d_{\bv} f(\bx)],
+% \end{align*}
+% the matrix trace being a typical example
+
+% \begin{proof}
+% \begin{align*}
+% 	LHS 
+% 	&= d_{\bv} L[f(\bx)] = \lim_{\substack{t\rightarrow 0\\\bw\rightarrow\bv}}\frac{L(f(\bx)+t\bw) - L(f(\bx))}{t}\\
+% 	&= \lim_{\substack{t\rightarrow 0\\\bw\rightarrow\bv}} \frac{L(f(\bx)) + tL(\bw) - L(f(\bx))}{t} = L(\bv),\\
+% 	RHS
+% 	&= L[d_{\bv}f(\bx)] = L\left[ \lim_{\substack{t\rightarrow 0\\\bw\rightarrow\bv}} \frac{f(\bx + t\bw) - f(\bx)}{t} \right] \\
+% 	&= L\left[\lim_{\substack{t\rightarrow 0\\\bw\rightarrow\bv}} \frac{(f(\bx) + t\bw+ o(t)) - f(\bx)}{t}\right] = L(\bv).
+% \end{align*}
+% \end{proof}
+% }
+
+\frame{
+\frametitle{Learning resources}
+\begin{enumerate}
+    \item Chapter 3 of MM Optimization by Kenneth Lange
+    \item Chapter 3 of Introduction to optimization and semidifferential calculus by Michel Delfour
+    \item Chapters 5, 6, 8, 9 of Matrix differential calculus with applications in statistics and econometrics by Magnus and Neudecker
+\end{enumerate}
+}
+
+\end{document}
