@@ -447,6 +447,28 @@ So as desired,
 \end{align*}
 }
 
+\frame{
+\frametitle{Expected Information}
+Omitting the subscript $i$, recall that $\bOmega= \sigma^2\bI + \bZ\bL\bL^t\bZ^t$, $ \br = \by - \bX\bbeta$, $d_{\bu}\br = -\bX\bu$,
+$d_s\bOmega =s\bI$, $d_{\bV}\bOmega = \bZ(\bV\bL^t+\bL\bV^t)\bZ^t$, and
+\begin{align*}
+d_{(\bu,s,\bV)}\ell
+& = \br^t\bOmega^{-1}\bX\bu-\frac{s}{2}\tr(\bOmega^{-1})+\frac{s}{2}\tr(\bOmega_i^{-2}\br\br^t)  \\
+& -\tr(\bL^t\bZ^t\bOmega^{-1}\bZ\bV)
++\tr\left(\bL^t\bZ^t\bOmega^{-1}\br\br^t\bOmega^{-1}\bZ\bV\right).
+\end{align*}
+Because $\E(\br) = {\bf 0}$ and $\E(\br\br^t)=\Omega$,
+\begin{align*}
+\E[d^2_{(\bu,s,\bV)}\ell] & = -\bu^t\bX^t\bOmega^{-1}\bX\bu -\frac{s^2}{2}\tr(\bOmega^{-2})
+\\ & -s\tr[\bOmega^{-1}\bZ(\bV\bL^t+\bL\bV^t)\bZ^t\bOmega^{-1}]
+\\
+& -\tr\left[\bL^t\bZ^t\bOmega^{-1}\bZ(\bV\bL^t+\bL\bV^t)\bZ^t\bOmega^{-1}\bZ\bV\right] \\
+& = -\bu^t\bX^t\bOmega^{-1}\bX\bu -\frac{s^2}{2}\tr(\bOmega^{-2}) \\
+& -2s\tr(\bL^t\bZ^t\bOmega^{-2}\bZ\bV) \\
+& -\tr\left[\bL^t\bZ^t\bOmega^{-1}\bZ(\bV\bL^t+\bL\bV^t)\bZ^t\bOmega^{-1}\bZ\bV\right].
+\end{align*}
+}
+
 % \frame{
 % \frametitle{Lemma: Commutative with linear operators}
 % For any linear operator $\rm L$,
